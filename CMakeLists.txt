@@ -8,4 +8,5 @@ add_executable(TTNT main.cpp
         PourWater/bucketState.cpp
         PourWater/bucketState.h
         PourWater/node.h
+        lab2/b2207541.cpp
 )

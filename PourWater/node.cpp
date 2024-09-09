@@ -170,7 +170,6 @@ Node* DFSAlgorithm(State state) {
     Node* root = makeNewNode(state, NULL, 0);
     push(root, &open);
     while (!emptyStack(open)){
-        //printf("a loop");
         Node* node = top(open);
         pop(&open);
         push(node, &closed);
@@ -180,15 +179,10 @@ Node* DFSAlgorithm(State state) {
 
         int option;
         for (option=1; option<= 6; option++){
-            //printf("option %d\n", option);
             State newState;
             makeNullState(&newState);
             if (callOperator(node->state, &newState, option)){
-                //printf("call success\n");
-                //printState(newState);
-                // skip if state is in closed or open
                 if (findState(newState, closed) || findState(newState, open)){
-                    //printf("state is in open or closed\n");
                     continue;
                 }
                 //printf("alloc\n");
@@ -203,7 +197,8 @@ Node* DFSAlgorithm(State state) {
     return NULL;
 }
 
-Node* BFSAlgorithm(State state) {
+// if preservative, will not consider fill bucked and empty bucket action
+Node* BFSAlgorithm(State state, int preservative = 0) {
     Queue open, closed;
     makeNullQueue(&open);
     makeNullQueue(&closed);

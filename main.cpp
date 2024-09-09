@@ -40,5 +40,8 @@ int main() {
     printResultStd(end);
     freeNodeRecursive(end);
 
+    // ex 6
+    State milkState = {0, 0};
+
     return 0;
 }
